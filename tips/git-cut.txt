@@ -1,0 +1,3 @@
+cat .git/refs/heads/master > .git/shallow
+git reflog expire --expire=now --all
+git gc --prune=now

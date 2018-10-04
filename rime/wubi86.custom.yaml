@@ -1,0 +1,47 @@
+
+patch:
+# 这两行，输入 "/" 进入特殊符号模式
+  "punctuator/import_preset": symbols
+  "recognizer/patterns/punct": "^/([a-z]+|[0-9])$"
+# 关闭自动调频
+  "translator/enable_user_dict": false
+# 关闭整句
+  "translator/enable_sentence": false
+# 扩展词库
+  "translator/dictionary": wubi86.ext
+# 自然码反查（键位混乱，取消）
+# "reverse_lookup/dictionary": double_pinyin
+  "key_binder/bindings":
+# 回车取消输入
+    - {when: composing, accept: Return, send: Escape}
+# 用 Tab 输入字母
+    - {when: composing, accept: Tab, send: Return}
+# 以下两行，空码取消输入
+    - {when: has_menu, accept: space, send: space}
+    - {when: composing, accept: space, send: Escape}
+# 覆盖二、三候选
+    - {when: has_menu, accept: semicolon, send: 2}
+    - {when: has_menu, accept: apostrophe, send: 3}
+# 默认英文输入
+  "switches/@0/reset": 1
+# 全角模式
+  "punctuator/full_shape":
+    "/": ["、", "／", "÷"]
+    "=": {commit: "＝"}
+    ";": ["……", "～～～", "；"]
+    "[" : [ 「, “, 【, 〔, ［ , ‘]
+    "]" : [ 」, ”, 】, 〕, ］, ’]
+    "\"": {commit: "\""}
+    #"'": {commit: "'"}
+    "'": ["嗯", "'", "'"]
+# 半角模式
+  "punctuator/half_shape":
+    "/": ["、", "／", "÷"]
+    "=": {commit: "="}
+    ";": ["……", "～～～", "；"]
+    "[" : [ 「, “, 【, 〔, ［ , ‘]
+    "]" : [ 」, ”, 】, 〕, ］, ’]
+    "\"": {commit: "\""}
+    #"'": {commit: "'"}
+    "'": ["嗯", "'", "'"]
+

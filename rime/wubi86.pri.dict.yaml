@@ -1,0 +1,13 @@
+# RIME ex-dic
+# wubi86.pri
+
+---
+name: wubi86.pri
+version: "0"
+sort: by_weight
+use_preset_vocabulary: true
+...
+
+# this is a stub dictionary due to *private use*
+# add your own private vocabulary here
+

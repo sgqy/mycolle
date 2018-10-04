@@ -1,0 +1,68 @@
+# RIME ex-dic
+# wubi86.extended
+
+---
+name: wubi86.pub
+version: "1.0"
+sort: by_weight
+use_preset_vocabulary: true
+...
+
+# 超级重码
+䇔	ynku	3900
+嬴	ynkv	3760000
+羸	ynkd	1090000
+臝	ynks	44300
+蠃	ynkj	701000
+贏	ynkm	12100000
+赢	ynkm	67300000
+驘	ynko	30400
+鸁	ynko	33200
+
+# 词频修正
+叹	kcy	31500000
+嗎	kcy	31499999
+没事	imgk	27300001
+洞	imgk	27300000
+顔	utem	34199999
+颜	utem	34200000
+
+# 一般词库
+管理器	tgkk
+安卓	pvhj
+释迦	tolk
+方差	yyud	1000000
+叫作	knwt	28900001
+
+大正	ddgh
+昭和	jvtk
+平成	gudn
+
+大佬	ddwf
+日式	jjaa
+美式	ugaa
+出息	bmth
+汗液	ifiy
+学长	ipta
+学姐	ipve
+学弟	ipux
+学妹	ipvf
+后宫	rgpk
+卧槽	ahsg
+声优	fnwd
+碾压	dndf
+红警	xaaq
+萝莉	alat
+蛋疼	nhut
+萌豚	ajee
+游走	iyfh
+吐槽	kfsg
+坑爹	fywq
+演歌	ipsk
+废萌	ynaj
+弃坑    ycfy
+巨乳	aneb
+贫乳	wveb
+深深	ipip
+棒棒糖	ssoy
+

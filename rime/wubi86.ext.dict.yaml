@@ -1,0 +1,15 @@
+# RIME ex-dic
+# wubi86.ext
+
+---
+name: wubi86.ext
+version: "1.0"
+sort: by_weight
+use_preset_vocabulary: true
+import_tables:
+  - wubi86.pub
+  - wubi86.pri
+# put original table at end, to prevent weight patch not working
+  - wubi86
+...
+

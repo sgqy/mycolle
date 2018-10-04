@@ -1,0 +1,7 @@
+:: https://www.reddit.com/r/Windows10/comments/3j8e2s
+
+cd /d "%Windir%\System32"
+takeown /F MusNotification.exe
+icacls MusNotification.exe /deny Everyone:(X)
+takeown /F MusNotificationUx.exe
+icacls MusNotificationUx.exe /deny Everyone:(X)

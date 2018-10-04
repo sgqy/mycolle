@@ -1,0 +1,6 @@
+setenv bootargs 'mem=64M console=ttyAMA0,115200 root=/dev/mtdblock2 rootfstype=jffs2 mtdparts=hi_sfc:1M(boot),4M(kernel),27M(rootfs)'
+setenv bootcmd 'sf probe 0;sf read 0x82000000 0x100000 0x300000;bootm 0x82000000'
+setenv bootdelay 3
+saveenv
+
+rtsp://10.20.50.22:554/test.264

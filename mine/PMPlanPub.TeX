@@ -1,0 +1,627 @@
+﻿
+%%%
+%  PMPlanPub.TeX (UTF-8 BOM)
+%
+%  人名已手动打码
+%
+%  编译文档请安装 TeXLive 2015
+%  编译命令(Windows)：
+%      xelatex -shell-escape PMPlanPub.TeX
+%
+%  注：WBS 章节缺少前置后置图，有兴趣的可补上
+%
+%%%
+
+%%% Page property
+\documentclass[a4paper,11pt]{article}
+\usepackage{geometry}
+\geometry{left=2.3cm,right=2.3cm,top=2.2cm,bottom=2.2cm}
+%\usepackage{indentfirst}
+
+%%% Language spec
+\XeTeXlinebreaklocale "zh"
+\XeTeXlinebreakskip = 0pt plus 1pt
+\usepackage{xeCJK,fontspec}
+\setmainfont{Times New Roman}
+\setsansfont{Arial}
+\setmonofont{Courier New}
+\setCJKmainfont{SimSun}
+\setCJKsansfont{SimHei}
+\setCJKmonofont{NSimSun}
+
+%%% Table package
+\usepackage{array}
+\usepackage{longtable}
+\newcolumntype{S}{>{\arraybackslash}m{3cm}}
+\newcolumntype{L}{>{\arraybackslash}m{5cm}}
+\newcolumntype{G}{>{\arraybackslash}m{7cm}}
+\newcolumntype{B}{p{0.3\textwidth}}
+\newcolumntype{T}{p{0.6\textwidth}}
+
+%%% Feature package
+\usepackage{caption}
+\usepackage{mpgraphics}
+
+
+
+%%% Define the document %%%
+
+\title{Project Management Plan}
+\author{Robert, Anne}
+
+\begin{document}
+
+\maketitle
+\tableofcontents
+
+\clearpage
+
+\section{Project Summary}
+\subsection{Project Overview}
+
+We plan to develop an online medical system for a hospital.
+
+With more and more people prefer to use Internet to search information and do some work that they used to go to hospital.
+Many hospital need to improve self regime and standardize their management style to adapt more and more patient demands.
+So the system is used to solve some steps that can be done through the Internet.
+
+Patients can use the system to query their information in the hospital. 
+The System includes making appointments, news displaying, consulting doctors, patient Information,and back-office operations.
+Making appointments are similar to patient make an appointment in hospital. 
+It is an important part of the system. 
+It's support an entry to go to see doctor and conduct base data information. 
+The main page has the doctor brief introduction and some explanation for every department. 
+So patients can get some useful information. 
+And news are some dynamic information about the hospital and some explanation about health. 
+
+By this system, clients can register and login, make an appointment, search register result or cancel it.
+Doctor can use the system to query patients information and registered number to arrange work.
+So it can do right decision and improve productivity. 
+
+The system are also useful to manage employee and finance in the hospital. 
+It can reduce workload effectively, enhance patient treatment efficient.
+
+\subsection{Program Model}
+\begin{center}
+\configure[mpggraphic][scale=.75]
+\begin{mpdisplay}
+input metaobj;
+beginfig(1);
+
+newBox.Ce(btex Expert Inquiry\strut etex);
+newBox.Cp(btex Reservation Management\strut etex);
+newBox.Cc(btex UserData Management\strut etex);
+newBox.Cl(btex User Sign in/up\strut etex);
+
+newBox.C(btex Front Operation\strut etex);
+newTree.tC(C)(Cp,Cc,Cl,Ce) "Ralign(right)", "treemode(R)";
+
+newBox.Be(btex Expert Management\strut etex);
+newBox.Bu(btex User Management\strut etex);
+newBox.Bp(btex Reservation Management\strut etex);
+newBox.Bb(btex Department Management\strut etex);
+newBox.Ba(btex Administrator Only\strut etex);
+
+newBox.B(btex Background Administration\strut etex);
+newTree.tB(B)(Be,Bu,Bp,Bb,Ba) "Ralign(right)", "treemode(R)";
+
+newBox.S(btex Reservation System of Hospitals\strut etex);
+newTree.tS(S)(tC,tB) "Ralign(right)", "treemode(R)";
+
+tS.c=origin;
+drawObj(tS);
+
+endfig;
+end
+\end{mpdisplay}
+\captionof{figure}{Program Model}
+\end{center}
+
+\subsection{Project Brief Information}
+\begin{center}
+\begin{longtable}{|l|l|}
+\caption*{Introduction} \\
+\hline Project Name        & Hospital Website System \\
+\hline Customer            & Hospital \\
+\hline Project Start Date  & 2016-03-20 \\
+\hline Project End Date    & 2016-06-05 \\
+\hline Project Leader (PL) & Robert \\
+\hline
+\end{longtable}
+\end{center}
+
+\subsection{Objectives}
+\begin{enumerate}
+\item We should develop a system that can be used. 
+\item We should use the minimum cost to finish the project.
+\item The project must be finished in two months.
+\item We can improve our programming skills and complete the final course project.
+\item The system is mainly suitable for ordinary users. so the UI must be friendly.
+\item Because some patients information may be sensitive, the data security and economics are also important to the system. 
+\end{enumerate}
+
+\subsection{Problem}
+\begin{enumerate}
+\item Our developers are not familiar with business processes.
+\item The deadline of the project is urgent.
+\item The system users and managers know little about computer , so we must put more time and money to maintain system.
+\item Customer has high processing capacity to this project. 
+\end{enumerate}
+
+\section{Project Planning}
+\subsection{Assumptions}
+\begin{enumerate}
+\item Training and development are simultaneous.
+\item If demand can not be determined at the initial design stage, consider the prototype implementation phase.
+\item If the server is down, reseting the initial data.
+\item We have corresponding hardware to develop and test our project.
+\item If core developers leave, to apply for project delays and proper handover.
+\item If the project is shortage of funds, timely financing, reduce unnecessary spending team.
+\end{enumerate}
+
+\subsection{Software Process Models}
+
+We use Rational Unified Process (RUP) methodology to develop this project.
+The development process will be tailored to match the RUP. 
+\begin{center}
+\begin{longtable}{|L|L|L|}
+\caption*{RUP} \\
+\hline Deviations from Standard Process            & Added/Modified/Deleted & Reasons for Deviations \\
+\hline Only those use cases that are going to be 
+taken up in a particular iteration will be 
+elaborated at that point in time                   & Modified               & Iteration-based development is being done \\
+\hline A poorly designed user information          & Added                  & Early thoughtless \\
+\hline Demand and system design delay two weeks    & Can not be modified    & Missing persons \\
+\hline UI can not achieve as design proofs         & Modified               & Improper use of CSS \\
+\hline Search feature is not fuzzy search          & Added                  & Lack of appropriate search engine \\
+\hline Web mobile terminal adapter poor response   & Modified               & Missing pages for mobile terminals \\
+\hline Image loading speed is slower than expected & Modified               & Back-end logic processing complex \\
+\hline 
+\end{longtable}
+\end{center}
+
+\subsection{Schedule}
+
+\begin{center}
+\begin{longtable}{|l|l|}
+\caption*{The preliminary project schedule} \\
+\hline Project Start   & 2016-03-20 \\
+\hline Project End     & 2016-06-05 \\
+\hline
+\end{longtable}
+
+\begin{longtable}{|l|l|l|l|}
+\caption*{Detail schedule} \\
+\hline Task              & Start time & Finish time & Leader \\
+\hline Project Planning  & 2016-03-20 & 2016-03-20  & Robert \\
+\hline Requirements      & 2016-03-21 & 2016-03-21  & Anne \\
+\hline Design            & 2016-03-22 & 2016-03-31  & Robert \\
+\hline Project Implement & 2016-04-01 & 2016-05-20  & Robert \\
+\hline Testing           & 2016-05-21 & 2016-05-31  & Anne \\
+\hline Submit            & 2016-06-05 & ---         & Robert \\
+\hline
+\end{longtable}
+
+\begin{longtable}{|r|l|l|l|}
+\caption*{Milestones and dividable} \\
+\hline Seq Num & Milestone Date   & Milestone                          & Deliverable \\
+\hline 1       & 160320 -- 160321 & Requirement analysis               & Document \\
+\hline 2       & 160321 -- 160325 & Preliminary plan                   & Document \\
+\hline 3       & 160326 -- 160331 & The detailed design of the system  & Document \\
+\hline 4       & 160401 -- 160401 & Framework and technology selection & Document \\
+\hline 5       & 160401 -- 160410 & Prototype development              & Code \\
+\hline 6       & 160410 -- 160520 & product  iterative development     & Code \\
+\hline 7       & 160521 -- 160525 & user feedback                      & Document \\
+\hline 8       & 160525 -- 160531 & fix system bugs                    & Code \\
+\hline 9       & 160601 -- 160603 & Summary of the document            & Document \\
+\hline 10      & 160605 -- 160605 & Roll-out and support               & Project Sign-off \\
+\hline 
+\end{longtable}
+
+\begin{longtable}{|l|r|r|}
+\caption*{Phase-wise Effort Estimate} \\
+\hline Activity/Phase            & Person-days & Person \\
+\hline Requirements              & 3           & 3 \\
+\hline Design                    & 20          & 2 \\
+\hline Build                     & 60          & 3 \\
+\hline Integration testing       & 2           & 1 \\
+\hline Regression testing        & 2           & 1 \\
+\hline Acceptance testing        & 1           & 1 \\
+\hline Project management        & 10          & 1 \\
+\hline Configuration  management & 3           & 1 \\
+\hline Training                  & 40          & 4 \\
+\hline Others                    & 8           & 4 \\
+\hline total                     & 149         & --- \\
+\hline 
+\end{longtable}
+\end{center}
+
+\subsection{WBS}
+\begin{center}
+\configure[mpggraphic][scale=.75]
+\begin{mpdisplay}
+input metaobj;
+beginfig(1);
+
+newBox.ra(btex \begin{tabular}{@{}c@{}} Requirements\\ Analysis\strut \end{tabular} etex);
+newBox.rc(btex \begin{tabular}{@{}c@{}} Requirements\\ Capturing\strut \end{tabular} etex);
+newBox.mp(btex \begin{tabular}{@{}c@{}} Making\\ Plan\strut \end{tabular} etex);
+newBox.r(btex \begin{tabular}{@{}c@{}} Requirment\strut \end{tabular} etex);
+
+newTree.rcra(rc)(ra) "Dalign(bot)";
+newTree.mprc(mp)(rcra) "Dalign(bot)";
+newTree.rmp(r)(mprc) "Dalign(bot)";
+
+newBox.dd(btex \begin{tabular}{@{}c@{}} Detail\\ Design\strut \end{tabular} etex);
+newBox.ad(btex \begin{tabular}{@{}c@{}} Architecture\\ Design\strut \end{tabular} etex);
+newBox.da(btex \begin{tabular}{@{}c@{}} Database\\ Design\strut \end{tabular} etex);
+newBox.d(btex \begin{tabular}{@{}c@{}} Design\strut \end{tabular} etex);
+
+newTree.addd(ad)(dd) "Dalign(bot)";
+newTree.ddaad(d)(da,addd) "Dalign(bot)";
+
+newBox.co(btex \begin{tabular}{@{}c@{}} Coding\strut \end{tabular} etex);
+newBox.bf(btex \begin{tabular}{@{}c@{}} Build System\\ Framework\strut \end{tabular} etex);
+newBox.pr(btex \begin{tabular}{@{}c@{}} Programing\strut \end{tabular} etex);
+
+newTree.bfco(bf)(co) "Dalign(bot)";
+newTree.prbf(pr)(bfco) "Dalign(bot)";
+
+newBox.at(btex \begin{tabular}{@{}c@{}} Acceptance\\ Test\strut \end{tabular} etex);
+newBox.st(btex \begin{tabular}{@{}c@{}} System\\ Test\strut \end{tabular} etex);
+newBox.it(btex \begin{tabular}{@{}c@{}} Integrated\\ Test\strut \end{tabular} etex);
+newBox.ut(btex \begin{tabular}{@{}c@{}} Unit\\ Testing\strut \end{tabular} etex);
+newBox.t(btex \begin{tabular}{@{}c@{}} Testing\strut \end{tabular} etex);
+
+newTree.stat(st)(at) "Dalign(bot)";
+newTree.itst(it)(stat) "Dalign(bot)";
+newTree.utit(ut)(itst) "Dalign(bot)";
+newTree.tut(t)(utit) "Dalign(bot)";
+
+newBox.pj(btex \begin{tabular}{@{}c@{}} Project\strut \end{tabular} etex);
+
+newTree.pjt(pj)(rmp,ddaad,prbf,tut) "Dalign(bot)";
+
+pjt.c=origin;
+drawObj(pjt);
+endfig;
+end
+\end{mpdisplay}
+\captionof{figure}{Graph of Planning}
+\end{center}
+
+\begin{center}
+\begin{longtable}{|r|l|r|l|l|r|}
+\caption*{WBS} \\
+\hline No. & Activity               & Duration    & Start      & Finish     & Pre-task \\
+\hline 1   & +online book system    & 75          & 2016-03-20 & 2016-06-05 & --- \\
+\hline 2   & +software planning     & 1           & 2016-03-20 & 2016-03-21 & --- \\
+\hline 3   & program planning       & 0.5         & 2016-03-20 & 2016-03-20 & --- \\
+\hline 4   & review planing         & 0.5         & 2016-03-21 & 2016-03-21 & --- \\
+\hline 5   & +requirements analysis & 4           & 2016-03-22 & 2016-03-25 & 2   \\
+\hline 6   & demand specification   & 2           & 2016-03-22 & 2016-03-24 & --- \\
+\hline 7   & interface design       & 1           & 2016-03-23 & 2016-03-24 & --- \\
+\hline 8   & demand validation      & 1           & 2016-03-25 & 2016-03-26 & --- \\
+\hline 9   & +design                & 6           & 2016-03-26 & 2016-03-31 & 5   \\
+\hline 10  & general design         & 2           & 2016-03-26 & 2016-03-27 & --- \\
+\hline 11  & specific design        & 2           & 2016-03-28 & 2016-03-29 & --- \\
+\hline 12  & validation             & 2           & 2016-03-30 & 2016-03-31 & --- \\
+\hline 13  & +develop               & 50          & 2016-04-04 & 2016-05-20 & 2.5 \\
+\hline 14  & coding                 & 40          & 2016-04-01 & 2016-05-20 & --- \\
+\hline 15  & re-checking            & 10          & 2016-05-01 & 2016-05-10 & --- \\
+\hline 16  & unit testing           & 45          & 2016-04-01 & 2016-05-20 & --- \\
+\hline 17  & +testing               & 10          & 2016-05-21 & 2016-05-31 & 13  \\
+\hline 18  & integration testing    & 5           & 2016-05-21 & 2016-05-25 & --- \\
+\hline 19  & system testing         & 5           & 2016-05-26 & 2016-05-31 & --- \\
+\hline 20  & +software acceptance   & 5           & 2016-06-01 & 2016-06-05 & 13  \\
+\hline 21  & software delivery      & 1           & 2016-06-05 & 2016-06-05 & --- \\
+\hline 
+\end{longtable}
+\end{center}
+
+\subsection{Resource}
+\begin{center}
+\begin{longtable}{|l|l|}
+\caption*{Resource Management} \\
+\hline Resource  & Number \\
+\hline Human     & 4 persons \\
+\hline Equipment & 5 computers and 1 server \\
+\hline
+\end{longtable}
+
+\begin{longtable}{|l|l|}
+\caption*{Development Environment} \\
+\hline Hardware & Software \\
+\hline Intel PC & Tomcat Server \\
+\hline Intel PC & SpringMVC \\
+\hline Mac Pro  & AngularIDE \\
+\hline
+\end{longtable}
+
+\begin{longtable}{|l|r|}
+\caption*{Resource Requirement} \\
+\hline Resource          & Required \\
+\hline PCs with 16GB RAM & 2 \\
+\hline MySQL             & 2 \\
+\hline SpringMVC         & 2 \\
+\hline WebStormIDE       & 3 \\
+\hline EclipseIDE        & 3 \\
+\hline
+\end{longtable}
+\end{center}
+
+\section{People management}
+\subsection{Team Management}
+\begin{center}
+\begin{longtable}{|l|l|r|l|}
+\caption*{Team Construction} \\
+\hline Name   & Role          & Desired & Date \\
+\hline Robert & PL            & 1       & 160320 \\
+\hline Robert & Module leader & 1       & 160320 \\
+\hline Robert & Developers    & 2       & 160320 \\
+\hline Anne   & Tester        & 1       & 160521 \\
+\hline Robert & Total         & 4       & --- \\
+\hline Anne   & Total         & 1       & --- \\
+\hline
+\end{longtable}
+
+\begin{longtable}{|l|r|}
+\caption*{People's Skill and Experience} \\
+\hline Domain        & Total \\
+\hline Java          & 4 \\
+\hline Hibernate     & 4 \\
+\hline HTML, CSS, JS & 3 \\
+\hline SpringMVC     & 3 \\
+\hline AngularJS     & 2 \\
+\hline MySQL         & 4 \\
+\hline
+\end{longtable}
+\end{center}
+
+\subsection{Responsibility of Role}
+\begin{center}
+\begin{longtable}{|S|T|}
+\caption*{Roles and Responsibilities} \\
+
+\hline Role & Responsibilities \\
+
+\hline Business Manager (BM) &
+    \begin{itemize}
+    \item Resolve escalated issues
+    \item Review project status
+    \item Participate in critical technical reviews
+    \end{itemize} \\
+    
+\hline Customer &
+    \begin{itemize}
+    \item Review design
+    \item Resolve escalated issues
+    \item Acceptance test planning and testing
+    \end{itemize} \\
+    
+\hline Account Manager (AM) &
+    \begin{itemize}
+    \item Customer satisfaction
+    \item Business growth
+    \item Project financial plan
+    \item Interface with sales and marketing
+    \item Training-related issues
+    \item Employee-related issues
+    \end{itemize} \\
+    
+\hline Project Manager (PM) &
+    \begin{itemize}
+    \item Project planning and scheduling
+    \item Design
+    \item Customer interaction
+    \item Reviews
+    \item Testing
+    \item Reporting
+    \item Task assignment and tracking
+    \item Interact with software quality adviser from SEPG
+    \item Ensure delivery as per contract
+    \item Interface with other departments as per need
+    \item Ensure open issues/customer complaints are closed properly
+    \item Ensure project members are adequately trained
+    \end{itemize} \\
+    
+\hline Module Leader (ML) &
+    \begin{itemize}
+    \item Design
+    \item Development
+    \item Testing
+    \item Reporting
+    \end{itemize} \\
+    
+\hline Defect Prevention (DP) Team &
+    \begin{itemize}
+    \item Spread awareness in the team on defects and their prevention
+    \item Analyze defect data
+    \item Identify methods to reduce defect injection
+    \end{itemize} \\
+    
+\hline Developer (DV) &
+    \begin{itemize}
+    \item Detail design for use cases
+    \item Development
+    \item Unit testing and integration testing
+    \end{itemize} \\
+    
+\hline Configuration Controller (CC) &
+    \begin{itemize}
+    \item Prepare the CM plan
+    \item Manage the configuration as per the CM plan
+    \end{itemize} \\
+    
+\hline Software Quality Adviser (SQA) from the SEPG &
+    \begin{itemize}
+    \item Process consultancy
+    \item Quality assurance (audits)
+    \item Install measurement tools and train project personnel
+    \item Participate in reviews of project plan and processes as necessary
+    \end{itemize} \\
+    
+\hline
+\end{longtable}
+\end{center}
+
+\subsection{Team Communication}
+In order to make the project goes well , we plan to have team meeting once a week.
+
+At the team meeting, every teammate should report their work schedule, problems or ideas.
+
+Every Monday, project manager should report to business manager about the project and report to the customer about the schedule. 
+
+\begin{center}
+\begin{longtable}{|l|l|}
+\caption*{Team Communication} \\
+\hline Activity                   & Frequency \\
+\hline Team meeting               & Once a week \\
+\hline Report To Business manager & Weekly on Monday via e-mail \\
+\hline Report To Customer         & Weekly on Monday \\
+\hline 
+\end{longtable}
+\end{center}
+
+\subsubsection{Report to the Customer}
+\begin{enumerate}
+\item Milestones reports and weekly status reports.
+\item Issues requiring clarifications and Escalation.
+\end{enumerate}
+
+\subsubsection{Report to the BM}
+\begin{enumerate}
+\item Milestones and weekly status reports.
+\item Customer feedback.
+\item Major changes in plan.
+\item Escalation and Issues requiring attention.
+\item Number of requirement changes and estimated effort for them.
+\end{enumerate}
+
+\section{Cost Estimation}
+Total cost is made up of direct cost and indirect cost.
+Direct cost consist of development cost and management cost and quality cost.
+Indirect cost consist of general cost, training cost, employee welfare, service cost, etc.
+
+In this project, our main development cost is the money to pay employees.
+The equipment cost will not be calculated in indirect cost.
+
+\subsection{Development Cost}
+We suppose that one person's wage is \(50/day\).
+We can take from table Phase-wise Effort Estimate that total workloads is \(149\) days.
+So the development cost is \(149 \times 100\).
+
+\subsection{Administration Cost}
+According to normal circumstances,
+\[
+Administration Cost = Development Cost \times 20\%
+\]
+
+\subsection{Direct Cost}
+\[
+Direct Cost = Development Cost + Administration Cost
+\]
+
+\subsection{Indirect Cost}
+Indirect cost include training cost, traveling expenses, utilities, staff welfare, service cost, etc.
+Based on past experience,
+\[
+Indirect Cost = Direct Cost \times 25\%
+\]
+
+\subsection{Total Cost}
+\[
+Total Cost = Direct Cost + Indirect Cost
+\]
+
+\begin{center}
+\begin{longtable}{|l|r|}
+\caption*{Cost} \\
+\hline Class               & Cost \\
+\hline Development Cost    & 14900 \\
+\hline Administration Cost & 2980 \\
+\hline Direct Cost         & 17880 \\
+\hline Indirect Cost       & 4470 \\
+\hline Total Cost          & 22350 \\
+\hline 
+\end{longtable}
+\end{center}
+
+\subsection{Ways to Reduce the Cost}
+\begin{enumerate}
+\item Every teammate plays more than one roles 
+\item We studied by Internet and free books. so we can reduce the cost of training
+\item We use the original web site development environment for development, reducing the cost of software.
+\item We use convenient development framework, reducing development and maintenance time of developers
+\item We pay much attention to testing and test frequently
+\end{enumerate}
+
+\subsection{Profit Predict}
+We think the risk profit rate is \(70\%\) (including risk fund \(10\%\), profit \(55\%\), Taxes \(5\%\)).
+
+So we can calculate the price of the software should be \(22270 \times 2 = 44540\) yuan.
+
+So the profit predict is about \(12248\) yuan. 
+
+\section{Risk Management}
+\begin{center}
+\begin{longtable}{|L|r|r|S|}
+\caption*{Risk Management} \\
+\hline Risks                                     & Probability & risk assessment & Mitigation Plan \\
+\hline The project objectives are not clearly    & 0.5         & 8               & Make sure the objective clearly \\
+\hline Not have the Project Feasibility Analysis & 0.5         & 10              & Take enough time to analysis and study \\
+\hline The demands change frequently             & 0.6         & 8               & Communicate with customer well \\
+\hline Design deviated from the customer's 
+demands or miss some important functions         & 0.4         & 10              & Review the design result \\
+\hline Developer's ability are inadequate or 
+misunderstand the customer's demands             & 0.6         & 9               & Training or Substitution \\
+\hline Developers are leaving                    & 0.3         & 10              & Sign  the contract  with employee \\
+\hline Not have testing play                     & 0.2         & 5               & Realize the review testing plan \\
+\hline Find material weakness after testing      & 0.6         & 8               & Use Distributed Testing \\
+\hline Tester is lack of experience              & 0.7         & 2               & Select experienced tester or training \\
+\hline Can't solve the problems after testing    & 0.6         & 6               & Developers consultation \\
+\hline Have many problems when running project   & 0.8         & 4               & Run the project partly \\
+\hline Customer add demand suddenly              & 0.8         & 4               & Communicate with customer and make sure the project scope \\
+\hline Important data loss                       & 0.2         & 10              & Make the backup data \\
+\hline Customer can't use the project easily     & 0.4         & 2               & Make detailed user guide or train user on software using \\
+\hline 
+\end{longtable}
+\end{center}
+
+\section{Quality Plan}
+We have some measures to improve the project quality The AM/PL is responsibility to get the customer feedback, 
+organize the customer's demands, and submit the feedback file to BM.
+If customer have some complaints, The AM/PL should track them and note them into customer complaint file. 
+
+When schedule changes every time, it must be agreed by the BM. 
+If some significant changes are made or Milestone reports have been submitted, they must reviewed by senior management.
+
+During the project, their are some review items that should be review. they are shown in the diagrams below.
+
+\begin{center}
+\begin{longtable}{|L|L|L|}
+\caption*{Quality Plan} \\
+\hline Review Point                                                & Review Item                      & Type of Review \\
+\hline End of project planning                                     & Project plan                     & Group review \\
+\hline End of project planning                                     & DCS set up                       & SQA review \\
+\hline End of project planning                                     & Project schedule                 & SQA review \\
+\hline End of project planning                                     & CM Plan                          & Group review \\
+\hline End of 90\% of requirements (This should be at the end of 
+first elaboration iteration)                                       & Business analysis and 
+                                                                     requirements specification 
+                                                                     document, Use case catalog       & Group review \\
+\hline End of 90\% design (This should be at the end of second 
+elaboration iteration)                                             & Design document, object model    & Group review \\
+\hline Beginning of each iteration                                 & Iteration plans                  & One-person review \\
+\hline End of detailed design                                      & Complex/first time generated 
+                                                                     program specs incl, test cases, 
+                                                                     interactive diagrams             & Group review \\
+\hline After coding for first few programs                         & Code                             & Group review \\
+\hline After self-testing of a process                             & Code                             & One-person review \\
+\hline End of unit test plan                                       & Unit test plan                   & One-person review \\
+\hline Beginning of integration test                               & Integration test plan            & Group review \\
+\hline
+\end{longtable}
+\end{center}
+
+\end{document}

@@ -1,0 +1,53 @@
+﻿
+%%%
+%  Sample.TeX (UTF-8 BOM)
+%
+%%%
+
+%%% Page property
+\documentclass[a4paper,11pt]{article}
+\usepackage{geometry}
+\geometry{left=2.3cm,right=2.3cm,top=2.2cm,bottom=2.2cm}
+%\usepackage{indentfirst} % 中文行首缩进专用
+
+%%% Language spec
+\XeTeXlinebreaklocale "zh"
+\XeTeXlinebreakskip = 0pt plus 1pt
+\usepackage{xeCJK,fontspec}
+\setmainfont{Times New Roman}
+\setsansfont{Arial}
+\setmonofont{Courier New}
+\setCJKmainfont{SimSun}
+\setCJKsansfont{SimHei}
+\setCJKmonofont{NSimSun}
+
+%%% Table package
+\usepackage{array}
+\usepackage{longtable}
+\newcolumntype{S}{>{\arraybackslash}m{3cm}}
+\newcolumntype{L}{>{\arraybackslash}m{5cm}}
+\newcolumntype{G}{>{\arraybackslash}m{7cm}}
+\newcolumntype{B}{p{0.3\textwidth}}
+\newcolumntype{T}{p{0.6\textwidth}}
+
+%%% Feature package
+\usepackage{caption}
+\usepackage{mpgraphics}
+
+
+
+%%% Define the document %%%
+
+\title{This is title}
+\author{This is author}
+
+\begin{document}
+
+\maketitle
+\tableofcontents
+
+\clearpage
+
+
+
+\end{document}
